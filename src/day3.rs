@@ -1,14 +1,13 @@
 use std::fs;
 
-pub(crate) fn main(){
+pub(crate) fn main() {
     let file_path: &str = "/home/jakob/Desktop/input";
 
     read_file(file_path)
 }
 
-fn read_file(file_path: &str){
-    let contents = fs::read_to_string(file_path)
-        .expect("Should have been able to read the file");
+fn read_file(file_path: &str) {
+    let contents = fs::read_to_string(file_path).expect("Should have been able to read the file");
 
     let split = contents.split_whitespace();
     let binaries: Vec<&str> = split.collect();
@@ -22,16 +21,16 @@ fn read_file(file_path: &str){
     let mut idx = 1;
 
     while idx < 13 {
-        x_count =0;
+        x_count = 0;
         y_count = 0;
 
         for binary in &binaries {
             let mut number: Vec<&str> = binary.split("").collect();
 
-            if number[idx] == "1"{
-                x_count +=1;
-            }else {
-                y_count +=1;
+            if number[idx] == "1" {
+                x_count += 1;
+            } else {
+                y_count += 1;
             }
         }
         idx += 1;
@@ -39,12 +38,14 @@ fn read_file(file_path: &str){
         if x_count > y_count {
             gamma.push('1');
             epsilon.push('0');
-        }else {
+        } else {
             gamma.push('0');
             epsilon.push('1');
         }
     }
 
-    println!("{}", isize::from_str_radix(&*gamma, 2).unwrap() * isize::from_str_radix(&*epsilon, 2).unwrap());
+    println!(
+        "{}",
+        isize::from_str_radix(&*gamma, 2).unwrap() * isize::from_str_radix(&*epsilon, 2).unwrap()
+    );
 }
-
