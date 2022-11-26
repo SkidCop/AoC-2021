@@ -17,18 +17,17 @@ fn read_file(file_path: &str) -> Vec<i32> {
         .map(|s| s.parse().expect("parse error"))
         .collect();
 
-    return numbers;
+    numbers
 }
 
 fn compare_ints(numbers: Vec<i32>) -> i32 {
-    let mut idx = 0;
     let mut count = 0;
 
     let mut x = 0;
     let mut y = 0;
 
-    for number in &numbers {
-        if !(idx + 3 >= numbers.len()) {
+    for (mut idx, number) in numbers.iter().enumerate() {
+        if idx + 3 < numbers.len() {
             x = number + numbers[idx + 1] + numbers[idx + 2];
             y = numbers[idx + 1] + numbers[idx + 2] + numbers[idx + 3];
 
@@ -38,5 +37,5 @@ fn compare_ints(numbers: Vec<i32>) -> i32 {
         }
         idx += 1;
     }
-    return count;
+    count
 }

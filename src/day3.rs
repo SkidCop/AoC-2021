@@ -25,7 +25,7 @@ fn read_file(file_path: &str) {
         y_count = 0;
 
         for binary in &binaries {
-            let mut number: Vec<&str> = binary.split("").collect();
+            let number: Vec<&str> = binary.split("").collect();
 
             if number[idx] == "1" {
                 x_count += 1;
@@ -46,6 +46,6 @@ fn read_file(file_path: &str) {
 
     println!(
         "{}",
-        isize::from_str_radix(&*gamma, 2).unwrap() * isize::from_str_radix(&*epsilon, 2).unwrap()
+        isize::from_str_radix(&gamma, 2).unwrap() * isize::from_str_radix(&epsilon, 2).unwrap()
     );
 }
